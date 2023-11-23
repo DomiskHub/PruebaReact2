@@ -7,20 +7,20 @@ const GlobalProvider = ({ children }) => {
 
   const getData = async () => {
     try {
-      const res = await fetch("../JSON/pizzas.json");
-      const data = await res.json();
-      setPizzas(data);
+      const res = await fetch("pizzas.json");
+      const json = await res.json();
+      setPizzas(json);
     } catch (error) {
-      console.log("Error");
+      console.log("error");
     }
-    console.log(json);
   };
 
   useEffect(() => {
     getData();
   }, []);
 
-  return <GlobalContext.Provider value={pizzas}>{children}</GlobalContext.Provider>;
+  console.log(pizzas);
+  return <GlobalContext.Provider value={{ pizzas }}>{children}</GlobalContext.Provider>;
 };
 
 export default GlobalProvider;

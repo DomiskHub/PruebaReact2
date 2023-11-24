@@ -3,13 +3,6 @@ const CardContainer = () => {
   return (
     <div className="card-container">
       <CardPizza />
-      <CardPizza />
-      <CardPizza />
-      <CardPizza />
-      <CardPizza />
-      <CardPizza />
-      <CardPizza />
-      <CardPizza />
     </div>
   );
 };

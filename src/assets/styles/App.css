@@ -35,15 +35,18 @@
 
 /* Card */
 
-.card-container {
+.card-item {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .card-container-container {
-  margin: 3rem;
+  margin: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-pizza {
@@ -52,6 +55,23 @@
   align-items: center;
   flex-direction: column;
   margin: 0 50px;
+  padding: 0;
+}
+
+.pizza-name {
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.pizza-ingredients {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.pizza-button {
+  margin-bottom: 20px;
 }
 
 .card {

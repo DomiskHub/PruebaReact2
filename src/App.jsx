@@ -4,6 +4,8 @@ import "./assets/styles/App.css";
 import Home from "./views/Home";
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
+import Carrito from "./views/Carrito";
+import NotFound from "./views/NotFound";
 
 function App() {
   return (
@@ -12,9 +14,9 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/pizza/:id" element={<Pizza />} />
-            <Route path="/carrito" element={<Carrito />} />
-          <Route path="*" element={<NotFound />} /> */}
+          {/* <Route path="/pizza/:id" element={<Pizza />} /> */}
+          <Route path="/carrito" element={<Carrito />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,7 +1,15 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
-const NotFound = () => {
-  return <div>NotFound</div>;
+const Notfound = () => {
+  return (
+    <div className="error">
+      <h1>Error 404</h1>
+      <p>Lo sentimos, la página que estás buscando no existe.</p>
+      {/* <Link className="back" to="/">
+        Volver &lt;-{" "}
+      </Link> */}
+    </div>
+  );
 };
 
-export default NotFound;
+export default Notfound;

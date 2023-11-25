@@ -3,30 +3,41 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { GlobalContext } from "../context/GlobalContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CardPizza() {
-  const { pizzas } = useContext(GlobalContext);
+  const { pizzas, addToCart } = useContext(GlobalContext);
+  const navigate = useNavigate();
+  const handleInfo = (id) => {
+    navigate(`/pizza/${id}`);
+  };
+
+  const handleAddToCart = (selectedPizza) => {
+    if (selectedPizza) {
+      addToCart(selectedPizza);
+      alert("Pizza agregada con exito");
+    }
+  };
+
   return (
     <>
       {pizzas.map((pizza) => (
         <Card key={pizza.id}>
-          <Card.Img variant="top" src={pizza.img} />
+          <Card.Img className="pizza-pic" variant="top" src={pizza.img} />
           <Card.Body className="card-pizza">
             <Card.Title className="pizza-name">
               <strong>{pizza.name}</strong>
             </Card.Title>
-            <Card.Text className="pizza-ingredients">
-              <ListGroup>
-                {pizza.ingredients.map((ingredient, index) => (
-                  <ListGroup.Item key={index}>🍕{ingredient}</ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card.Text>
+            <ListGroup className="pizza-ingredients">
+              {pizza.ingredients.map((ingredient, index) => (
+                <ListGroup.Item key={index}>🍕{ingredient}</ListGroup.Item>
+              ))}
+            </ListGroup>
             <div>
-              <Button className="pizza-button" variant="info">
+              <Button className="pizza-button" variant="info" onClick={() => handleAddToCart(pizza)}>
                 Agregar por ${pizza.price}
               </Button>
-              <Button className="pizza-button" variant="danger">
+              <Button className="pizza-button" variant="danger" onClick={() => handleInfo(pizza.id)}>
                 Mas info 👀
               </Button>
             </div>

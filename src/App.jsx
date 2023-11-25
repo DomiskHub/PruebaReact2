@@ -6,21 +6,22 @@ import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import Carrito from "./views/Carrito";
 import NotFound from "./views/NotFound";
+import DetailPizza from "./views/DetailPizza";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <main>
         <NavigationBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/pizza/:id" element={<Pizza />} /> */}
+          <Route path="/pizza/:id" element={<DetailPizza />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
-    </>
+      </main>
+    </BrowserRouter>
   );
 }
 

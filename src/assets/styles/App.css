@@ -6,6 +6,12 @@
   font-family: "Roboto", sans-serif;
 }
 
+main {
+  display: grid;
+  grid-template-rows: 56px 1fr 80px;
+  min-height: 100vh;
+}
+
 /* Header */
 
 .header {
@@ -43,10 +49,21 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   max-width: 80%;
+  border: 1px solid rgb(195, 195, 195);
+  padding: 50px;
+  border-radius: 10px;
 }
 
 .card-container-container {
   margin: 3rem;
+}
+
+.pizza-pic {
+  transition: transform 0.3s ease;
+}
+
+.pizza-pic:hover {
+  transform: scale(1.1);
 }
 
 .card-pizza {
@@ -65,6 +82,10 @@
   margin: 20px 0;
 }
 
+.pizza-desc {
+  text-transform: none;
+}
+
 .pizza-ingredients {
   text-transform: capitalize;
   text-align: center;
@@ -72,12 +93,24 @@
 }
 
 .pizza-button {
-  margin: 20px;
+  margin: 10px;
+  margin-bottom: 20px;
   color: white;
 }
 
 .card {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.detail-card {
+  width: 1000px;
+  margin: 50px auto;
+}
+
+.pizza-pic-detail {
+  border-radius: 20px;
+  margin: 20px auto;
+  width: 500px;
 }
 
 /* Navlink */
@@ -97,6 +130,19 @@ a {
   color: white;
   text-decoration: none;
   margin-left: 20px;
+}
+
+/* Carrito */
+
+.cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cart-text {
+  text-transform: capitalize;
 }
 
 /* Footer */

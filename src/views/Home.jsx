@@ -2,7 +2,7 @@ import CardContainer from "../components/CardContainer";
 
 const Home = () => {
   return (
-    <main>
+    <div>
       <div className="header">
         <div className="img-text">
           <h1>¡Pizzería Mamma Mia!</h1>
@@ -14,7 +14,7 @@ const Home = () => {
       <div className="d-flex justify-content-center card-container-container">
         <CardContainer />
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -1,14 +1,16 @@
 import Container from "react-bootstrap/Container";
-
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function NavigationBar() {
   return (
     <div>
-      <Navbar bg="info" data-bs-theme="dark">
+      <Navbar className="navbar-title" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">🍕 Pizzeria Mamma Mia! </Navbar.Brand>
+          <Link className="navbar-title1" to="/">
+            🍕 Pizzeria Mamma Mia!
+          </Link>
           <div className="pizza-link">
             <NavLink className={({ isActive }) => (isActive ? "pizza-nav" : undefined)} to="/">
               Home

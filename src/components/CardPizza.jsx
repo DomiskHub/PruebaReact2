@@ -1,11 +1,16 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import Toast from "react-bootstrap/Toast";
 import { GlobalContext } from "../context/GlobalContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { formatToChileanPesos } from "../helpers/helpers";
+import { Link } from "react-router-dom";
 
 function CardPizza() {
+  const [showToast, setShowToast] = useState(false);
+  const [selectedPizzaName, setSelectedPizzaName] = useState("");
   const { pizzas, addToCart } = useContext(GlobalContext);
   const navigate = useNavigate();
   const handleInfo = (id) => {
@@ -15,8 +20,15 @@ function CardPizza() {
   const handleAddToCart = (selectedPizza) => {
     if (selectedPizza) {
       addToCart(selectedPizza);
-      alert("Pizza agregada con exito");
+      setShowToast(true);
+      setSelectedPizzaName(selectedPizza.name.charAt(0).toUpperCase() + selectedPizza.name.slice(1));
     }
+  };
+
+  const hideToast = () => {
+    setTimeout(() => {
+      setShowToast(false);
+    }, 2000);
   };
 
   return (
@@ -35,7 +47,7 @@ function CardPizza() {
             </ListGroup>
             <div>
               <Button className="pizza-button" variant="info" onClick={() => handleAddToCart(pizza)}>
-                Agregar por ${pizza.price}
+                Agregar por {formatToChileanPesos(pizza.price)}
               </Button>
               <Button className="pizza-button" variant="danger" onClick={() => handleInfo(pizza.id)}>
                 Mas info 👀
@@ -44,6 +56,29 @@ function CardPizza() {
           </Card.Body>
         </Card>
       ))}
+      <Toast
+        show={showToast}
+        onClose={() => setShowToast(false)}
+        autohide
+        delay={2000}
+        style={{
+          position: "fixed",
+          top: "20px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 9999,
+          minWidth: "200px",
+        }}
+        onEntered={hideToast}
+      >
+        <Toast.Header>
+          <strong className="me-auto ">🍕🍕🍕</strong>
+        </Toast.Header>
+        <Toast.Body>{selectedPizzaName ? `Pizza ${selectedPizzaName} agregada con éxito` : ""}</Toast.Body>
+      </Toast>
+      <Link className="go" to="/carrito">
+        Ir a carrito -&gt;
+      </Link>
     </>
   );
 }
